@@ -60,7 +60,7 @@ Details and all paths in [docs/how-it-works.md](docs/how-it-works.md).
 - **First Principles:** "What are you actually trying to achieve?"
 - **The Expansionist:** "What if this works better than planned?"
 - **The Executor:** "What happens Monday morning, and what gets dropped?"
-- **The Buyer:** "Would I pay for this? What would I do instead?" Sees only what a client would see.
+- **The Buyer:** "Would I pay for this? What would I do instead?" Sees only what a client would see, and lists the objections you will hear.
 - **The Ranker** and **the Gap Finder** review anonymously.
 - **The Chairman** decides.
 

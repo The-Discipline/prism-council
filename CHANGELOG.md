@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.0 (2026-10-30)
+- The Buyer ends with its 2 or 3 strongest objections, in the client's words, and marks the deal-breaker.
+- Concise output adds "Objection to prepare for" on pricing, offer and positioning decisions.
+- MIT license.
+
 ## 0.2.0 (2026-10-30)
 - Every output ends with a "show the council" line, in all modes. On request, shows the five advisors by name, both reviews, and the ranking mapped back to advisors.
 

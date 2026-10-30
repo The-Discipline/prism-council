@@ -47,15 +47,12 @@ A Claude skill: a decision council for one-person businesses. One decision goes 
 
 ## Open questions
 
-- **v0.3, proposed, not applied yet:**
-  - Buyer gives its 2 or 3 strongest objections in the client's own words and names the deal-breaker
-  - One Buyer per segment when the options are different client segments (cap 3); otherwise one Buyer playing the target client from context
-  - Optional concise-output line for client-facing decisions: `**Objection to prepare for:** "..."`
+- **Proposed, not applied:** one Buyer per segment when the options are different client segments (cap 3); otherwise one Buyer playing the target client from context.
+- **Trigger and command name:** "prismatize" proposed as a fun trigger. Skill folder could become `prismatize` so the Claude Code command reads `/prism:prismatize`. Decide together with the ZIP name.
 - Keep "council this" as a trigger? It collides with Ole's skill if both are installed.
 - 3-month staleness: probably per section (pricing changes rarely, pipeline weekly).
 - Buyer for career decisions (CDI vs freelance): the buyer is a hiring manager, not a client. Not handled yet.
 - Plugin invocation reads `/prism:prism-council`. Rename the skill folder to `council` for the plugin, while the ZIP keeps `prism-council`? Decide before first release.
-- License: MIT suggested, not confirmed.
 - First Principles is the only advisor without a "The ...-er" name. "The Questioner" proposed for visual consistency.
 
 ## Writing rules for this repo

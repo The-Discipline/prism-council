@@ -75,7 +75,7 @@ Launch each advisor as a separate subagent, all at once, so none sees another's 
 
 **The Executor.** Asks whether one person can do this alongside client work, with the cash and hours they have. What happens Monday morning, and what gets dropped to make room.
 
-**The Buyer.** A prospective client who knows only the Buyer brief. Would I pay for this? What makes me hesitate? What would I do instead: do it myself, use a free resource or an AI tool, hire someone else, or do nothing? The Buyer is simulated and has no market data, so when the answer depends on real buyers, it names the assumption to test with real prospects.
+**The Buyer.** A prospective client who knows only the Buyer brief. Would I pay for this? What makes me hesitate? What would I do instead: do it myself, use a free resource or an AI tool, hire someone else, or do nothing? It ends with its 2 or 3 strongest objections, written the way a client would actually say them, and marks the one that would stop the deal. The Buyer is simulated and has no market data, so when the answer depends on real buyers, it names the assumption to test with real prospects.
 
 Advisor prompt:
 
@@ -153,6 +153,7 @@ One agent receives the full brief, the five responses with advisor names, and bo
 - Treat the ranking as input. Side with a minority view when its reasoning is stronger, and say so.
 - Weight [observed] above [assumed], and [assumed] above [guess].
 - Check the solo-business risks the advisors may have skipped: cash runway, non-billable hours (valued at the user's rate when known), dependence on a few clients, the capacity of one person, and whether the decision can be undone.
+- For client-facing decisions (pricing, offers, positioning), keep the Buyer's deal-breaker objection for the output, unless the verdict already removes it.
 - Pick one outcome:
   - **Verdict:** one recommendation, when the evidence supports it.
   - **Top 3:** only if the user asked for options. Ranked, with why #1 beats #2.
@@ -173,6 +174,7 @@ Write in the user's language, following `style.md`.
 - {reason}
 - {reason}
 **Main risk:** {one sentence}
+{client-facing decisions only: **Objection to prepare for:** "{the deal-breaker, in the client's words}"}
 **What would change this:** {the fact or result that would flip the verdict}
 **Do first:** {one action, doable within 48 hours}
 ```
