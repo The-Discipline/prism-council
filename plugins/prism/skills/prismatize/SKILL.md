@@ -47,6 +47,10 @@ Then check coverage. List what this specific decision needs (a pricing decision 
 
 - **Stale:** if a dated item the decision depends on is older than 3 months, ask in one line whether it still holds.
 
+**New businesses.** If the user has no clients yet, revenue, pipeline and client history don't exist. Don't list them as gaps. Look for the "Starting out" facts instead (skills, network, savings runway, target, untested beliefs). Most facts will be [assumed], so expect "Not yet" more often, and treat it as the right answer when it is.
+
+**Market check (optional).** When the decision depends on the market (pricing, positioning, niche, a new offer) and web search is available, look up 3 to 5 comparable offers: same service, same kind of client, same country or language. For each, note the offer, the price if public, the positioning, and the source link. Tag them [observed] with today's month. Tell the user in one line ("Checked 4 comparable offers"). Without web search, skip this step and note "market not checked" in the output.
+
 ## 3. Write the brief
 
 Set the output options from the user's request (defaults first):
@@ -59,9 +63,10 @@ Write two neutral briefs. Add no opinion of your own.
 - The decision and the options
 - The goal behind it
 - Relevant context, each fact tagged [observed], [assumed], [goal] or [constraint], dated when known
+- Comparable offers from the market check, if any
 - What a wrong choice would cost
 
-**Buyer brief** (Buyer only): what a prospective client could see or would be told. Offer, price, pitch, positioning, public material. Leave out revenue, goals, pipeline, constraints and internal reasoning. For an internal decision (tools, admin), give only what would change from a client's point of view.
+**Buyer brief** (Buyer only): what a prospective client could see or would be told. Offer, price, pitch, positioning, public material. Add the comparable offers from the market check, presented as alternatives a prospect could find. Leave out revenue, goals, pipeline, constraints and internal reasoning. For an internal decision (tools, admin), give only what would change from a client's point of view.
 
 ## 4. Run the five advisors in parallel
 
@@ -203,7 +208,7 @@ For **Top 3**, list the options ranked with one line of reasoning each, then one
 Full advisor answers, reviews and ranking available: ask "show the council".
 ```
 
-When the user asks, show the five advisor answers with their names, both reviews, and the ranking with letters mapped back to advisors. Keep them available for the whole conversation.
+When the user asks, show the five advisor answers with their names, both reviews, the ranking with letters mapped back to advisors, and the comparable offers with their links if a market check ran. Keep them available for the whole conversation.
 
 ## Reduced mode (no subagents)
 

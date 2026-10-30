@@ -12,6 +12,15 @@ Tag each line:
 
 Add a date (the month is enough) to anything that changes.
 
+Just starting, with no clients yet? Fill "Starting out" and "Constraints", and skip the rest until you have something to put there.
+
+## Starting out (no clients yet)
+- Previous job and skills I'm selling:
+- People who could become a first client or refer one:
+- Savings runway, in months:
+- Who I want to work for, and why:
+- What I believe but haven't tested yet (tag each [assumed]):
+
 ## Business (rarely changes)
 - What I do:
 - Who I do it for:
