@@ -8,7 +8,7 @@
 
 ## Claude Code
 ```bash
-claude plugin marketplace add <owner>/prism
+claude plugin marketplace add <owner>/prism-council
 claude plugin install prism@prism
 ```
 Full mode: advisors and reviewers run as parallel subagents.

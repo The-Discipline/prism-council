@@ -73,7 +73,7 @@ Details and all paths in [docs/how-it-works.md](docs/how-it-works.md).
 
 **Claude Code**
 ```bash
-claude plugin marketplace add <owner>/prism
+claude plugin marketplace add <owner>/prism-council
 claude plugin install prism@prism
 ```
 
