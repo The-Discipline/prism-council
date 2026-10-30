@@ -1,0 +1,14 @@
+{
+  "name": "prism",
+  "description": "Prism: a decision council for one-person businesses",
+  "owner": {
+    "name": "Virgile Gouala"
+  },
+  "plugins": [
+    {
+      "name": "prism",
+      "source": "./plugins/prism",
+      "description": "One decision, five angles, one verdict."
+    }
+  ]
+}

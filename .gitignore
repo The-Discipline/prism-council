@@ -1,0 +1,8 @@
+# Personal context and decision logs never go in the repo
+prism-context.md
+decisions.md
+
+# Build output
+dist/
+
+.DS_Store
