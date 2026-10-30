@@ -6,7 +6,8 @@ Context for any Claude Code session working on this repo. Read it fully before c
 
 A Claude skill: a decision council for one-person businesses. One decision goes in, five independent advisors answer, two reviewers judge anonymously, a chairman gives a verdict and one action.
 
-- Name: Prism. Slug: `prism-council`
+- Name: Prism (the brand). Every technical identifier is `prismatize`: repo, skill, ZIP. Claude Code command: `/prism:prismatize`. Triggers: "prismatize this", "prism this", "prismatiser".
+- "council" lives in descriptions and topics for search, never as a name.
 - Tagline: "One decision, five angles, one verdict."
 - Landing tagline: "The advisory board for businesses of one."
 - Owner: Virgile Gouala (goua.la). Product from day one, tested on real decisions first.
@@ -14,7 +15,7 @@ A Claude skill: a decision council for one-person businesses. One decision goes 
 
 ## Repo map
 
-- `plugins/prism/skills/prism-council/`: the skill (SKILL.md, style.md, context-template.md). This folder is also what gets zipped for Claude app upload.
+- `plugins/prism/skills/prismatize/`: the skill (SKILL.md, style.md, context-template.md). This folder is also what gets zipped for Claude app upload.
 - `.claude-plugin/marketplace.json` + `plugins/prism/.claude-plugin/plugin.json`: make the repo a Claude Code plugin marketplace.
 - `docs/`: how it works (diagrams), platforms, context guide, examples, identity brief.
 - `examples/`: fictional filled context; run example (to do, from a real run).
@@ -48,16 +49,13 @@ A Claude skill: a decision council for one-person businesses. One decision goes 
 ## Open questions
 
 - **Proposed, not applied:** one Buyer per segment when the options are different client segments (cap 3); otherwise one Buyer playing the target client from context.
-- **Trigger and command name:** "prismatize" proposed as a fun trigger. Skill folder could become `prismatize` so the Claude Code command reads `/prism:prismatize`. Decide together with the ZIP name.
-- Keep "council this" as a trigger? It collides with Ole's skill if both are installed.
 - 3-month staleness: probably per section (pricing changes rarely, pipeline weekly).
 - Buyer for career decisions (CDI vs freelance): the buyer is a hiring manager, not a client. Not handled yet.
-- Plugin invocation reads `/prism:prism-council`. Rename the skill folder to `council` for the plugin, while the ZIP keeps `prism-council`? Decide before first release.
 - First Principles is the only advisor without a "The ...-er" name. "The Questioner" proposed for visual consistency.
 
 ## Writing rules for this repo
 
-Apply `plugins/prism/skills/prism-council/style.md` to every file, docs included:
+Apply `plugins/prism/skills/prismatize/style.md` to every file, docs included:
 - No em dashes. Run `scripts/check-style.sh` before committing.
 - No "it's not X, it's Y". No rhythmic lists of three. Say each thing once.
 - Bullet points over tables.

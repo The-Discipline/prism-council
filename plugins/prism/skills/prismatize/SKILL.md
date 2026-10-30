@@ -1,6 +1,6 @@
 ---
-name: prism-council
-description: "Prism: one decision, five angles, one verdict. A decision council for one-person businesses (freelancers, consultants, coaches, trainers, solo creators). Runs a business decision through five independent advisors, an anonymous review and a chairman verdict, grounded in the user's business context. Use when the user says 'prism this', 'run it through Prism', 'council this', or brings a real decision with options and stakes: pricing, offers, positioning, acquisition channels, clients, capacity, career direction. Do not use for exploration or brainstorming ('what am I missing?'), writing, reviewing copy, factual questions, or decisions inside a company with a team."
+name: prismatize
+description: "Prism: one decision, five angles, one verdict. A decision council for one-person businesses (freelancers, consultants, coaches, trainers, solo creators). Runs a business decision through five independent advisors, an anonymous review and a chairman verdict, grounded in the user's business context. Use when the user says 'prismatize this', 'prismatiser', 'prism this', 'run it through Prism', or brings a real decision with options and stakes: pricing, offers, positioning, acquisition channels, clients, capacity, career direction. Do not use for exploration or brainstorming ('what am I missing?'), writing, reviewing copy, factual questions, or decisions inside a company with a team."
 ---
 
 # Prism

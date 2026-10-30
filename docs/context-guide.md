@@ -3,7 +3,7 @@
 Prism gives advice that fits you only when it knows your business. This guide explains how to fill the context file.
 
 ## Where to put it
-- Save your copy of [the template](../plugins/prism/skills/prism-council/context-template.md) as `prism-context.md` in your project, or attach it when you ask a question.
+- Save your copy of [the template](../plugins/prism/skills/prismatize/context-template.md) as `prism-context.md` in your project, or attach it when you ask a question.
 - Keep it private. This repo's `.gitignore` excludes `prism-context.md` and `decisions.md` so they can't be committed by accident.
 
 ## The tags

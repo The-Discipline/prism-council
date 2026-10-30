@@ -7,7 +7,7 @@ A decision council for one-person businesses: freelancers, consultants, coaches,
 When you run a business alone, nobody pushes back on your decisions. Prism gives you that push-back. It reads your business context, splits your decision into five angles (risk, root cause, upside, execution, and how a client sees it), has the answers reviewed anonymously, then gives you one verdict and one action for the next 48 hours. When the evidence isn't there, it says "not yet" and tells you the cheapest way to find out.
 
 > [!IMPORTANT]
-> Prism is only as good as the context you give it. Without your offers, prices, clients and capacity, it gives generic advice. Start from the [context template](plugins/prism/skills/prism-council/context-template.md) and the [filled example](examples/context-example.md).
+> Prism is only as good as the context you give it. Without your offers, prices, clients and capacity, it gives generic advice. Start from the [context template](plugins/prism/skills/prismatize/context-template.md) and the [filled example](examples/context-example.md).
 
 ## Prism is for decisions
 
@@ -67,21 +67,21 @@ Details and all paths in [docs/how-it-works.md](docs/how-it-works.md).
 ## Install
 
 **Claude app (web, desktop, mobile)**
-1. Download `prism-council.zip` from the latest [release](../../releases).
+1. Download `prismatize.zip` from the latest [release](../../releases).
 2. In Claude: Customize > Skills > "+" > Create skill > Upload a skill.
 3. Make sure code execution is enabled.
 
 **Claude Code**
 ```bash
-claude plugin marketplace add <owner>/prism-council
-claude plugin install prism@prism
+claude plugin marketplace add <owner>/prismatize
+claude plugin install prism@prismatize
 ```
 
 **Other platforms:** see [docs/platforms.md](docs/platforms.md).
 
 ## Use it
 
-Say "prism this" or "run it through Prism", followed by your decision.
+Say "prismatize this" (or "prism this"), followed by your decision. In Claude Code, you can also type `/prism:prismatize`.
 
 Options, in plain words:
 - "give me the top 3" for ranked alternatives

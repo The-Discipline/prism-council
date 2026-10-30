@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.0 (2026-10-30)
+- Renamed to `prismatize` everywhere: repo, skill, ZIP, marketplace. Claude Code command: `/prism:prismatize`.
+- New triggers: "prismatize this", "prismatiser". Dropped "council this" to avoid clashing with other council skills.
+
 ## 0.3.0 (2026-10-30)
 - The Buyer ends with its 2 or 3 strongest objections, in the client's words, and marks the deal-breaker.
 - Concise output adds "Objection to prepare for" on pricing, offer and positioning decisions.
