@@ -7,11 +7,20 @@ description: "Prism: one decision, five angles, one verdict. A decision council 
 
 One decision, five angles, one verdict.
 
-Prism helps a person who runs a business alone make a decision they would otherwise make with no one to push back. Five advisors look at the decision independently, two reviewers judge their work anonymously, and a chairman delivers a verdict, or says honestly that the evidence isn't there yet.
+Prism helps a person who runs a business alone make a decision they would otherwise make with no one to push back. Five advisors look at the decision independently, two reviewers judge their work anonymously, a chairman delivers a verdict, and a checker tests that verdict before the user sees it. When the evidence isn't there, Prism says so. When the decision belongs to someone else (a lawyer, an accountant, a partner), it says that too.
 
 Method: Andrej Karpathy's LLM Council (independent answers, anonymous peer review, chairman synthesis). Inspired by Ole Lehmann's llm-council skill.
 
 Read `style.md` before writing anything. Every agent prompt includes it.
+
+**Agents and models.** In Claude Code with the Prism plugin installed, run each role with its plugin agent, so each one uses the right model:
+- `prism:advisor` (mid-tier model) for the five advisors
+- `prism:ranker` (mid-tier model) for Reviewer 1
+- `prism:gap-finder` (top model) for Reviewer 2
+- `prism:chairman` (top model) for the verdict and its revision
+- `prism:checker` (top model) for the verdict check
+
+Elsewhere, run each role as a general subagent. Without subagents, use Reduced mode.
 
 ## 1. Check that there is a decision
 
@@ -21,6 +30,7 @@ Prism works on decisions: a choice between options, with something at stake. Cla
 - **Cheap, reversible decision** (which tool to try this week): say so in one line and answer directly. Run Prism only if the user insists.
 - **Exploration** ("what am I missing?", "ideas for my business"): Prism doesn't do this. Say it in one line, then offer to reframe: list the options the user already mentioned, or ask them to name 2 or 3, and turn the request into "which one do I pursue?"
 - **Writing, reviewing, facts**: help normally, without Prism.
+- **Purely legal, tax or regulatory questions** ("which legal status should I choose?", "can I deduct this?"): the answer depends on rules and on the user's file, not on judgement. Skip the council and answer in the Escalate format (section 7).
 
 If the decision is clear but the options aren't, ask one question to get them.
 
@@ -29,15 +39,15 @@ If the decision is clear but the options aren't, ask one question to get them.
 Look for context in this order and stop once the decision is covered:
 
 1. Files or text attached to this request
-2. A context file in the workspace or project (`prism-context.md`, `CLAUDE.md`, a `memory/` folder) or the platform's memory
+2. A context file in the workspace or project (`prismatize-context.md`, `prism-context.md`, `CLAUDE.md`, a `memory/` folder) or the platform's memory
 3. Connected tools holding business documents (Notion, Google Drive), if the user's setup points there
 4. The current conversation
 
-Keep this short: you need the few facts this decision depends on, not a full audit.
+Any document works: an offers page, a pitch deck, a Notion page, notes. The context template is a checklist of what matters, not a required format. Keep this short: you need the few facts this decision depends on, not a full audit.
 
 Then check coverage. List what this specific decision needs (a pricing decision needs current prices, capacity and client sources; a channel decision needs available hours and where past clients came from) and compare with what you found.
 
-- **Covered and recent:** state in one line what you used and from where. Example: "Context: offers, pricing and pipeline from prism-context.md (updated 3 weeks ago)."
+- **Covered and recent:** state in one line what you used and from where. Example: "Context: offers, pricing and pipeline from prismatize-context.md (updated 3 weeks ago)."
 - **Gaps:** show this before running, naming the missing items, and wait for the answer:
 
   > Prism needs your business context to give advice that fits you. For this decision, I'm missing: {2 to 4 specific items}.
@@ -153,7 +163,7 @@ Under 200 words.
 
 ## 6. Chairman verdict
 
-One agent receives the full brief, the five responses with advisor names, and both reviews.
+One agent (the chairman) receives the full brief, the five responses with advisor names, and both reviews.
 
 - Treat the ranking as input. Side with a minority view when its reasoning is stronger, and say so.
 - Weight [observed] above [assumed], and [assumed] above [guess].
@@ -163,6 +173,39 @@ One agent receives the full brief, the five responses with advisor names, and bo
   - **Verdict:** one recommendation, when the evidence supports it.
   - **Top 3:** only if the user asked for options. Ranked, with why #1 beats #2.
   - **Not yet:** when the decision hinges on a fact nobody has. Name it, give the cheapest way to get it, a deadline, and the results that mean go or stop. This is a full answer.
+  - **Escalate:** when the decision should not be made by an AI council. It hinges on legal, tax or regulatory rules applied to the user's own case, it commits significant money or signs a binding contract the user can't easily exit, or it belongs partly to someone else (a business partner, a spouse or family affected by it). Name who should decide or be consulted, and contribute what Prism can: the trade-offs, the questions to bring them, what not to do before talking to them. This is a full answer, not a refusal.
+
+## 6b. Check the verdict
+
+Before presenting anything, run one checker agent. It receives the full brief, the chairman's draft, and the Gap Finder's review.
+
+```
+A chairman wrote this draft verdict for a decision in a one-person business:
+---
+{full brief}
+---
+Draft:
+{chairman draft}
+
+Gap Finder review:
+{review 2}
+
+Check the draft against each point:
+1. Does the verdict resolve the main risk it names, or ignore it?
+2. Does "What would change this" follow from the reasoning?
+3. Is "Do first" one action, concrete, and startable within 48 hours?
+4. Does it rest on [observed] facts, or on [assumed] ones presented as facts?
+5. Does it address the claim the Gap Finder said would flip the decision?
+6. Is the outcome right: should this be Not yet or Escalate instead?
+7. Does it follow style.md?
+
+Answer PASS, or CHANGES followed by one line per problem: the point number and what to fix. Nothing else.
+
+{style.md}
+```
+
+- **PASS:** present the draft.
+- **CHANGES:** send the draft and the list back to the chairman for one revision, then present the revised version. One round only, no second check. More rounds make a verdict sound more convincing, not better.
 
 ## 7. Present the result
 
@@ -194,6 +237,20 @@ For **Not yet**, replace Verdict, Why and Do first with:
 **Stop if:** {result}
 ```
 
+For **Escalate**, use:
+
+```
+**Verdict:** Escalate. This decision belongs to {who}, because {reason in one line}.
+**What I see:**
+- {trade-off or risk}
+- {trade-off or risk}
+**Questions to bring them:**
+- {question}
+- {question}
+**Before talking to them, don't:** {the irreversible step to avoid}
+**Do first:** {contact them, or gather the document they will ask for}
+```
+
 For **Top 3**, list the options ranked with one line of reasoning each, then one line on why #1 beats #2.
 
 **Detailed:** the concise block, then:
@@ -201,6 +258,7 @@ For **Top 3**, list the options ranked with one line of reasoning each, then one
 - **Where they clash**: both sides and the reason they disagree
 - **What the review caught** that no single advisor saw
 - **Each advisor in one line**
+- **Check:** passed, or revised once, and on which points
 
 **Every output, in every mode, ends with this line:**
 
@@ -208,7 +266,7 @@ For **Top 3**, list the options ranked with one line of reasoning each, then one
 Full advisor answers, reviews and ranking available: ask "show the council".
 ```
 
-When the user asks, show the five advisor answers with their names, both reviews, the ranking with letters mapped back to advisors, and the comparable offers with their links if a market check ran. Keep them available for the whole conversation.
+When the user asks, show the five advisor answers with their names, both reviews, the ranking with letters mapped back to advisors, the checker's result (and the first draft if it was revised), and the comparable offers with their links if a market check ran. Keep them available for the whole conversation.
 
 ## Reduced mode (no subagents)
 
@@ -216,6 +274,7 @@ Advisors written in a single response see each other and converge, so they aren'
 1. Write one analysis covering the five angles.
 2. In a separate pass, attack it as the Contrarian and the Buyer would.
 3. Give the chairman verdict from both.
+4. In a separate pass, check that verdict against the seven points of section 6b and fix what fails.
 
 Label the result: "Reduced Prism: this platform can't run independent advisors."
 

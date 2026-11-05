@@ -15,7 +15,9 @@ flowchart LR
     B -. "client view only" .-> A5["Buyer"]
     A1 & A2 & A3 & A4 & A5 --> R["Anonymous review<br/>Ranker + Gap Finder"]
     R --> CH["Chairman"]
-    CH --> V["Verdict + one action"]
+    CH --> K{"Checker"}
+    K -- "PASS" --> V["Verdict + one action"]
+    K -- "CHANGES, one revision" --> CH
 ```
 
 ## 2. The gate: is this a Prism question?
@@ -55,7 +57,8 @@ flowchart TD
     T -- "No" --> V["Verdict<br/>why, main risk,<br/>what would change it, do first"]
     T -- "Yes" --> T3["Top 3<br/>ranked, why #1 beats #2"]
     E -- "No, a key fact is missing" --> NY["Not yet<br/>cheapest test, deadline,<br/>go if / stop if"]
-    V & T3 & NY --> L{"Length"}
+    E -- "Not Prism's call" --> ES["Escalate<br/>who decides, questions to bring,<br/>what not to do before"]
+    V & T3 & NY & ES --> L{"Length"}
     L -- "Default" --> CON["Concise"]
     L -- "On request" --> DET["Detailed: agreement,<br/>clashes, what review caught,<br/>each advisor in one line"]
 ```
@@ -65,11 +68,12 @@ flowchart TD
 ```mermaid
 flowchart TD
     P["Platform check"] --> S{"Subagents available?"}
-    S -- "Yes" --> F["Full Prism<br/>5 independent advisors<br/>2 reviewers, 1 chairman"]
+    S -- "Yes" --> F["Full Prism<br/>5 independent advisors<br/>2 reviewers, 1 chairman,<br/>1 checker"]
     S -- "No" --> R1["One analysis<br/>covering five angles"]
     R1 --> R2["Separate attack pass<br/>as Contrarian and Buyer"]
     R2 --> R3["Chairman verdict"]
-    R3 --> LBL["Labeled: Reduced Prism"]
+    R3 --> R4["Check pass<br/>on the same 7 points"]
+    R4 --> LBL["Labeled: Reduced Prism"]
 ```
 
 ## 6. The learning loop

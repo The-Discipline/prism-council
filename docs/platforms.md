@@ -5,15 +5,14 @@
 - Code execution must be enabled.
 - Available on all plans. On Team and Enterprise, a skill can be shared with colleagues or published to the organization's library.
 - Full mode when the session can run subagents. Otherwise Prism runs in reduced mode and says so.
+- All roles use the model selected in the app. Pick the best one available.
 
 ## Claude Code
 ```bash
 claude plugin marketplace add <owner>/prismatize
 claude plugin install prism@prismatize
 ```
-Full mode: advisors and reviewers run as parallel subagents.
-
-Advanced: if you set models per subagent, run the advisors and the Ranker on a mid-tier model and the Gap Finder and Chairman on the top model. Cheaper, with little loss.
+Full mode: advisors and reviewers run as parallel subagents. The plugin ships one agent per role with its own model: `prism:advisor` and `prism:ranker` on Sonnet, `prism:gap-finder`, `prism:chairman` and `prism:checker` on Opus. Cheaper than running everything on the top model, with judgement kept where it matters.
 
 ## Other agents that read SKILL.md
 Some agents install skills straight from a GitHub folder (TypingMind, for example). Point them at `plugins/prism/skills/prismatize`.

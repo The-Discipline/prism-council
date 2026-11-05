@@ -18,7 +18,7 @@ Everything needed to design Prism's logo, visuals and diagrams. Source of truth:
 A decision council for one-person businesses: five AI advisors, an anonymous review, one verdict.
 
 **Short (around 40 words, store listings, cards)**
-Prism runs a business decision through five advisors who think independently, two reviewers who judge their work anonymously, and a chairman who delivers a verdict. Built for freelancers, consultants and solo creators who decide alone.
+Prism runs a business decision through five advisors who think independently, two reviewers who judge their work anonymously, a chairman who delivers a verdict, and a checker that tests it. Built for freelancers, consultants and solo creators who decide alone.
 
 **Medium (README intro, landing page hero)**
 When you run a business alone, nobody pushes back on your decisions. Prism gives you that push-back. It reads your business context, splits your decision into five angles (risk, root cause, upside, execution, and how a client sees it), has the answers reviewed anonymously, then gives you one verdict and one action for the next 48 hours. When the evidence isn't there, it says "not yet" and tells you the cheapest way to find out.
@@ -73,14 +73,15 @@ Each advisor is one ray of the split light. Pairs create tension: Contrarian vs 
 - **The Ranker:** evaluates the five answers anonymously and ranks them on three criteria: grounded in your situation, names what matters, leads to action.
 - **The Gap Finder:** looks for what all five missed: the shared unchecked assumption, the missing topic, the one claim that would flip the decision.
 
-### The chairman
+### The chairman and the checker
 
-- **The Chairman:** reads everything and decides. Weights facts over assumptions, can side with a minority, checks solo-business risks (cash runway, non-billable hours, client dependence, solo capacity, reversibility).
+- **The Chairman:** reads everything and decides. Weights facts over assumptions, can side with a minority, checks solo-business risks (cash runway, non-billable hours, client dependence, solo capacity, reversibility). Can also escalate a decision that belongs to someone else.
+- **The Checker:** tests the chairman's draft on seven points (does it resolve its own main risk, is the action doable, does it rest on facts) and sends it back once if needed.
 
 ### Key numbers
 
-- 5 advisors, 2 reviewers, 1 chairman: 8 agents per full run
-- 3 possible outcomes: Verdict, Top 3, Not yet
+- 5 advisors, 2 reviewers, 1 chairman, 1 checker: 9 agents per full run, 10 with a revision
+- 4 possible outcomes: Verdict, Top 3, Not yet, Escalate
 - 2 output lengths: concise (default), detailed
 - 1 action at the end, doable within 48 hours
 
@@ -106,7 +107,7 @@ The goua.la palette has four accents (teal, coral, purple, orange). Prism needs 
 - First Principles: purple (depth)
 - The Buyer: yellow (the outside light, a new color for the outside view)
 - Chairman / verdict: white beam on the #191919 background
-- Reviewers: grey (they judge, they don't add a color)
+- Reviewers and checker: grey (they judge, they don't add a color)
 - Low-context verdict: dimmed or dashed white beam
 
 Keep illustrations black and white like the rest of goua.la. Color appears only on the five rays and in diagrams.
@@ -132,7 +133,9 @@ flowchart LR
     B -. "client view only" .-> A5["Buyer"]
     A1 & A2 & A3 & A4 & A5 --> R["Anonymous review<br/>Ranker + Gap Finder"]
     R --> CH["Chairman"]
-    CH --> V["Verdict + one action"]
+    CH --> K{"Checker"}
+    K -- "PASS" --> V["Verdict + one action"]
+    K -- "CHANGES, one revision" --> CH
 ```
 
 ### 5.2 The gate: is this a Prism question?
@@ -172,7 +175,8 @@ flowchart TD
     T -- "No" --> V["Verdict<br/>why, main risk,<br/>what would change it, do first"]
     T -- "Yes" --> T3["Top 3<br/>ranked, why #1 beats #2"]
     E -- "No, a key fact is missing" --> NY["Not yet<br/>cheapest test, deadline,<br/>go if / stop if"]
-    V & T3 & NY --> L{"Length"}
+    E -- "Not Prism's call" --> ES["Escalate<br/>who decides, questions to bring,<br/>what not to do before"]
+    V & T3 & NY & ES --> L{"Length"}
     L -- "Default" --> CON["Concise"]
     L -- "On request" --> DET["Detailed: agreement,<br/>clashes, what review caught,<br/>each advisor in one line"]
 ```
@@ -182,11 +186,12 @@ flowchart TD
 ```mermaid
 flowchart TD
     P["Platform check"] --> S{"Subagents available?"}
-    S -- "Yes" --> F["Full Prism<br/>5 independent advisors<br/>2 reviewers, 1 chairman"]
+    S -- "Yes" --> F["Full Prism<br/>5 independent advisors<br/>2 reviewers, 1 chairman,<br/>1 checker"]
     S -- "No" --> R1["One analysis<br/>covering five angles"]
     R1 --> R2["Separate attack pass<br/>as Contrarian and Buyer"]
     R2 --> R3["Chairman verdict"]
-    R3 --> LBL["Labeled: Reduced Prism"]
+    R3 --> R4["Check pass<br/>on the same 7 points"]
+    R4 --> LBL["Labeled: Reduced Prism"]
 ```
 
 ### 5.6 The learning loop
@@ -207,7 +212,7 @@ flowchart LR
 2. **Prism reads your context.** Offers, prices, clients, capacity. If something's missing, it asks before running.
 3. **Five advisors answer separately.** Each from one angle, none sees the others.
 4. **Two reviewers judge anonymously.** One ranks the answers, one hunts for what everyone missed.
-5. **The chairman decides.** A verdict, a top 3, or "not yet" with the cheapest test to run.
+5. **The chairman decides.** A verdict, a top 3, "not yet" with the cheapest test to run, or "escalate" when someone else should decide. A checker tests it first.
 6. **You act within 48 hours.** One action, then the outcome goes back into your context.
 
 ## 7. Credits

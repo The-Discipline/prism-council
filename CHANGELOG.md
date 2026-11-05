@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.6.0 (2026-11-05)
+- Verdict check: a checker agent tests the chairman's draft on seven points (main risk resolved, coherent "what would change this", doable action, facts over assumptions, Gap Finder's key claim addressed, right outcome, style). CHANGES triggers one revision, never more.
+- New outcome, Escalate: for decisions that hinge on legal, tax or regulatory rules, binding high-stakes commitments, or that belong partly to a partner or family. Prism names who should decide and prepares the conversation. Pure legal or tax questions skip the council.
+- Claude Code plugin agents with a model per role: advisor and ranker on Sonnet; gap-finder, chairman and checker on Opus.
+- Context: any document works, the template is a checklist. Suggested file renamed `prismatize-context.md` (the old name still works).
+
 ## 0.5.0 (2026-10-30)
 - New businesses: a "Starting out" section in the context template. Prism no longer flags missing revenue or client history as gaps for someone with no clients yet.
 - Optional market check: when the decision depends on the market and web search is available, Prism looks up 3 to 5 comparable offers before the council, tagged [observed], shared with the Buyer as alternatives.
